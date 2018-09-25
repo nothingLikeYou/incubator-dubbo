@@ -14,7 +14,8 @@
   See the License for the specific language governing permissions and
   limitations under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -120,23 +121,34 @@
         <maven_checkstyle_version>3.0.0</maven_checkstyle_version>
         <maven_jacoco_version>0.8.2</maven_jacoco_version>
         <apache-rat-plugin.version>0.12</apache-rat-plugin.version>
-        <arguments />
+        <arguments/>
         <checkstyle.skip>true</checkstyle.skip>
         <rat.skip>true</rat.skip>
     </properties>
 
     <modules>
+        <!--公共逻辑模块:包括 Util 类和通用模型-->
         <module>dubbo-common</module>
         <module>dubbo-metrics</module>
+        <!--容器模块:是一个 Standlone 的容器,以简单的 Main 加载 Spring 启动,因为服务通常不需要 Tomcat/JBoss 等 Web 容器的特性,没必要用 Web 去加载服务-->
         <module>dubbo-container</module>
+        <!--远程通讯模块:相当于 Dubbo 协议的实现,如果 RPC 用 RMI 协议则不需要使用此包-->
         <module>dubbo-remoting</module>
+        <!--远程调用模块:抽象各种协议,以及动态代理,只包含一对一的调用,不关心集群的管理-->
         <module>dubbo-rpc</module>
+        <!--过滤器模块:提供了默认的过滤器-->
         <module>dubbo-filter</module>
+        <!--集群模块:将多个服务提供方伪装为一个提供方,包括:负载均衡,容错,路由等,集群的地址列表可以是静态配置的,也可以是由注册中心下发-->
         <module>dubbo-cluster</module>
+        <!--注册中心模块:基于注册中心下发地址的集群方式,以及对各种注册中心的抽象-->
         <module>dubbo-registry</module>
+        <!--监控模块:统计服务调用次数,调用时间的,调用链跟踪的服务-->
         <module>dubbo-monitor</module>
+        <!--配置模块:是 Dubbo 对外的API,用户通过 Config 使用Dubbo,隐藏 Dubbo 所有细节-->
         <module>dubbo-config</module>
+        <!--快速启动示例-->
         <module>dubbo-demo</module>
+        <!--插件模块:提供内置插件-->
         <module>dubbo-plugin</module>
         <module>dubbo-serialization</module>
         <module>dubbo-bootstrap</module>
