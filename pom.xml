@@ -153,8 +153,11 @@
         <module>dubbo-serialization</module>
         <module>dubbo-bootstrap</module>
         <module>dubbo-compatible</module>
+        <!--统一定义了 Dubbo 依赖的三方库的版本号 dubbo-parent 会引入该 BOM -->
         <module>dubbo-dependencies-bom</module>
+        <!--统一定义了 Dubbo 的版本号,Dubbo-Demo 模块中会依赖到-->
         <module>dubbo-bom</module>
+        <!--定义了Dubbo的打包脚本 使用dubbo时,引入该pom-->
         <module>dubbo-all</module>
         <module>dubbo-distribution</module>
     </modules>
