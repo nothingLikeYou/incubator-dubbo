@@ -23,6 +23,7 @@ import java.util.List;
 
 /**
  * MethodConfig
+ * 继承 AbstractMethodConfig ，方法级配置
  *
  * @export
  */
